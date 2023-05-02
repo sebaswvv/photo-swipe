@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 export const useImageStore = defineStore({
   id: 'image',
   state: () => ({
-    images: [] as string[]
+    images: [] as string[],
+    selectedImages: [] as string[]
   }),
   actions: {
     addImage(image: string) {
@@ -11,6 +12,9 @@ export const useImageStore = defineStore({
     },
     clearImages() {
       this.images = []
+    },
+    selectImage(image: string) {
+      this.selectedImages.push(image)
     }
   }
 })
