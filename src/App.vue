@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useImageStore } from './Stores/ImageStore'
 
-const images = ref(<any>[])
+const imageStore = useImageStore()
 
 const onFileChange = (event: any) => {
   const files = event.target.files
@@ -10,7 +10,7 @@ const onFileChange = (event: any) => {
   fileArray.forEach((file: any) => {
     const reader = new FileReader()
     reader.onload = (e: any) => {
-      images.value.push(e.target.result)
+      imageStore.addImage(e.target.result)
     }
     reader.readAsDataURL(file)
   })
@@ -22,7 +22,7 @@ const onFileChange = (event: any) => {
     <h1>Select a folder to begin</h1>
     <input type="file" ref="fileInput" @change="onFileChange" directory webkitdirectory>
     <div>
-      <img v-for="image in images" :key="image" :src="image" style="max-width: 100%">
+      <img v-for="image in imageStore.images" :key="image" :src="image" style="max-width: 100%">
     </div>
   </div>
 </template>
