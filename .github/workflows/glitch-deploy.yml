@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Deploy to Glitch
-      uses: noahehall/nodeploy@v1.0.5
+      uses: glitch-tools/action@v1
       with:
-        api-token: ${{ secrets.GLITCH_EDIT_TOKEN }}
         project-name: ${{ secrets.GLITCH_PROJECT_NAME }}
+        token: ${{ secrets.GLITCH_EDIT_TOKEN }}
