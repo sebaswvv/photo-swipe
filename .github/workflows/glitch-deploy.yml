@@ -3,7 +3,7 @@ name: Deploy to Glitch
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
